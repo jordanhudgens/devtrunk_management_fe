@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="list-group">
+		<a class="list-group-item list-group-item-action active">
+			<h1 class="headline">Customer List</h1>
+		</a>
+		<span *ngFor="let customer of customers" class="list-group-item list-group-item-action">
+			<a (click)="goToShow(customer)" class="proposal-link">
+				<h5 class="list-group-item-heading">{{customer.email}}</h5>
+				<p class="list-group-item-text">
+				</p>
+			</a>
+		</span>
+	</div>
+</div>

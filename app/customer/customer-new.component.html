@@ -1,0 +1,106 @@
+<div class="card container form-container">
+	<div class='row'>
+
+		<div class="col-md-6">
+			<h1>Create a Customer</h1>
+
+			<div>
+				<form (ngSubmit)="createCustomer(customer)" #customerForm="ngForm">
+					<div class="form-group">
+						<label for="customer">Customer First Name</label>
+						<input type="text"
+										class="form-control"
+										id="f_name"
+										placeholder="Jon"
+										required
+										name="f_name"
+										#f_name='ngModel'
+										[(ngModel)]="customer.f_name"
+						>
+						<div [hidden]="f_name.valid || f_name.pristine"
+									class='alert alert-danger'
+						>
+							First name is required
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="l_name">Customer Last Name</label>
+						<input type="text"
+										class="form-control"
+										id="l_name"
+										required
+										name="l_name"
+										#l_name='ngModel'
+										[(ngModel)]="customer.l_name"
+						>
+						<div [hidden]="l_name.valid || l_name.pristine"
+									class='alert alert-danger'
+						>
+							Last name is required
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="tools">Customer Email Address</label>
+						<input type="text"
+										class="form-control"
+										id="email"
+										placeholder="jon@snow.com"
+										required
+										name="email"
+										#email='ngModel'
+										[(ngModel)]="customer.email"
+						>
+						<div [hidden]="email.valid || email.pristine"
+									class='alert alert-danger'
+						>
+							A customer email address is required
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="sign_up">When did the customer sign up?</label>
+						<input type="date"
+										class="form-control"
+										id="sign_up"
+										required
+										name="sign_up"
+										#sign_up='ngModel'
+										[(ngModel)]="customer.sign_up"
+						>
+						<div [hidden]="sign_up.valid || sign_up.pristine"
+									class='alert alert-danger'
+						>
+							You need to enter when the customer signed up for the a subscription box
+						</div>
+					</div>
+
+					<button type="submit"
+						class='btn btn-outline-primary btn-lg'
+						[disabled]="!customerForm.form.valid"
+						[hidden]="submitted"
+					>
+						Generate Customer
+					</button>
+
+					<div
+						[hidden]="!submitted"
+						class="alert alert-success"
+						role="alert"
+					>
+						Your proposal has been created <a class="alert-link" routerLink="/customers">View all customers</a>
+					</div>
+
+				</form>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div>
+				<p>Hi {{ customer.email }},</p>
+			</div>
+		</div>
+		
+	</div>
+</div>
